@@ -3,7 +3,7 @@
 
 <div class="row text-right">
   <div class="col">
-    <button class="btn btn-danger">
+    <button class="btn btn-danger" [routerLink]="['/heroes']">
       <i class="fa fa-arrow-left"></i>
       Regresar
     </button>
@@ -16,8 +16,9 @@
     <label for="">Firebase id</label>
     <input
       type="text"
-      name=""
+      name="id"
       id=""
+      [(ngModel)]="Heroe.id"
       class="form-control"
       placeholder="Firebase"
       aria-describedby="helpId"
@@ -31,10 +32,11 @@
     <label for="">Nombre</label>
     <input
       type="text"
-      name=""
+      name="nombre"
       id=""
+      [(ngModel)]="Heroe.nombre"
       class="form-control"
-      placeholder=""
+      placeholder="Nombre"
       aria-describedby="helpId"
       required
     />
@@ -45,8 +47,9 @@
     <label for="">Poder</label>
     <input
       type="text"
-      name=""
+      name="poder"
       id=""
+      [(ngModel)]="Heroe.poder"
       class="form-control"
       placeholder=""
       aria-describedby="helpId"
@@ -56,11 +59,21 @@
 
   <!-- Estado -->
   <div class="form-group">
-    <button type="button" class="btn btn-outline-success w-50">
+    <button
+      *ngIf="!Heroe.vivo"
+      (click)="Heroe.vivo = true"
+      type="button"
+      class="btn btn-outline-success w-50"
+    >
       <i class="fa fa-smile-wink"></i>
       Vivo
     </button>
-    <button type="button" class="btn btn-outline-danger w-50">
+    <button
+      *ngIf="Heroe.vivo"
+      (click)="Heroe.vivo = false"
+      type="button"
+      class="btn btn-outline-danger w-50"
+    >
       <i class="fa fa-dizzy"></i>
       Muerto
     </button>

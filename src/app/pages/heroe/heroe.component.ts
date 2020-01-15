@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { HeroeModel } from '../../models/heroe.model';
 
 @Component({
   selector: 'app-heroe',
@@ -7,7 +8,10 @@ import { NgForm } from '@angular/forms';
   styles: []
 })
 export class HeroeComponent implements OnInit {
-  constructor() {}
+  Heroe: HeroeModel;
+  constructor() {
+    this.Heroe = new HeroeModel();
+  }
 
   ngOnInit() {}
 
