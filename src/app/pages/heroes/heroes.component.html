@@ -25,7 +25,23 @@
       <th scope="row">{{ i }}</th>
       <td>{{ heroe.nombre }}</td>
       <td>{{ heroe.poder }}</td>
-      <td>{{ heroe.vivo }}</td>
+      <td>
+        <span *ngIf="heroe.vivo" class="badge badge-success">Vivo</span>
+        <span *ngIf="!heroe.vivo" class="badge badge-danger">Muerto</span>
+      </td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-info mr-1"
+          [routerLink]="['/heroe', heroe.id]"
+        >
+          <i class="fas fa-edit"></i>
+        </button>
+
+        <button type="button" class="btn btn-danger mr-1">
+          <i class="fas fa-trash"></i>
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>
