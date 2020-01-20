@@ -30,4 +30,27 @@ export class HeroesService {
       })
     );
   }
+
+  getHeroes() {
+    return this.http
+      .get(`${this.url}/heroes.json`)
+      .pipe(map(this.crearArreglo));
+  }
+
+  private crearArreglo(heroesObj) {
+    const HEROES: HeroeModel[] = [];
+
+    console.log(heroesObj);
+
+    if (heroesObj === null) return [];
+
+    Object.keys(heroesObj).forEach(key => {
+      const HEROE: HeroeModel = heroesObj[key];
+      HEROE.id = key;
+
+      HEROES.push(HEROE);
+    });
+
+    return HEROES;
+  }
 }
