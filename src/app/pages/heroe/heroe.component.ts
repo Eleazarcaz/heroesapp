@@ -21,8 +21,14 @@ export class HeroeComponent implements OnInit {
       return;
     }
 
-    this._heroes.crearHeroe(this.Heroe).subscribe(resp => {
-      console.log(resp);
-    });
+    if (this.Heroe.id) {
+      this._heroes
+        .actualizarHeroe(this.Heroe)
+        .subscribe(resp => console.log(resp));
+    } else {
+      this._heroes.crearHeroe(this.Heroe).subscribe(resp => {
+        console.log(resp);
+      });
+    }
   }
 }

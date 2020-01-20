@@ -12,6 +12,16 @@ export class HeroesService {
     this.url = 'https://heroes-app-f1d91.firebaseio.com';
   }
 
+  actualizarHeroe(heroe: HeroeModel) {
+    const HEROE_TEMP: HeroeModel = {
+      ...heroe
+    };
+
+    delete HEROE_TEMP.id;
+
+    return this.http.put(`${this.url}/heroes/${heroe.id}.json`, HEROE_TEMP);
+  }
+
   crearHeroe(heroe: HeroeModel) {
     return this.http.post(`${this.url}/heroes.json`, heroe).pipe(
       map((resp: any) => {
