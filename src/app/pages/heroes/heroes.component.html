@@ -10,7 +10,10 @@
   </div>
 </div>
 
-<table class="table animated fadeIn faster mt-3">
+<table
+  *ngIf="!cargando && Heroes.length > 0"
+  class="table animated fadeIn faster mt-3"
+>
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
@@ -50,7 +53,11 @@
   </tbody>
 </table>
 
-<div class="alert alert-info text-center" role="alert">
+<div
+  *ngIf="cargando"
+  class="alert alert-info text-center mt-3 animated fadeIn faster"
+  role="alert"
+>
   <strong>Cargando</strong>
   <p>
     <i class="fa fa-spinner fa-spin fa-2x"></i>
@@ -60,7 +67,11 @@
   </p>
 </div>
 
-<div class="alert alert-warning text-center" role="alert">
+<div
+  *ngIf="!cargando && Heroes.length === 0"
+  class="alert alert-warning text-center mt-3 animated fadeIn faster"
+  role="alert"
+>
   <strong>Alerta</strong>
   <p>
     <i class="fa fa-exclamation fa-2x"></i>
